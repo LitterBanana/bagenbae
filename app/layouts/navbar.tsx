@@ -4,23 +4,29 @@ export default function Navbar() {
     <div className="flex justify-between items-center p-4 bg-white shadow-md">
       {/* Logo Section */}
       <div className="flex items-center space-x-2">
-        <h1 className="text-xl font-bold flex items-center">
+        <a href="/" className="text-xl font-bold flex items-center">
           <img 
             src="/vercel.svg" 
             alt="Vercel Logo" 
             className="h-6 mr-2" 
           />
           BagenBae
-        </h1>
+        </a>
       </div>
 
       {/* Navigation Links */}
       <div className="flex items-center space-x-4">
+        <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
+            Dashboard
+        </a>
+        <a href="navigasi.tsx" className="text-gray-600 hover:text-gray-900 transition-colors">
+            Navigasi
+        </a>
         <a 
-          href="#" 
+          href="auth/login.tsx" 
           className="text-gray-600 hover:text-gray-900 transition-colors"
         >
-          login
+          Login
         </a>
         <img 
           src="/window.svg" 

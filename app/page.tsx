@@ -61,7 +61,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-<Navbar />
+    <Navbar />
       <div className="w-full max-w-[1500px] mx-auto relative overflow-hidden">
         <div 
           className="flex transition-transform duration-500 ease-in-out"

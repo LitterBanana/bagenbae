@@ -9,16 +9,16 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
-        {/* Logo (kiri) */}
-        <div className="flex-1 flex items-center">
+      <div className="max-w-7xl mx-auto px-4 py-5 flex items-center">
+        {/* SECTION: KIRI (Logo) */}
+        <div className="flex items-center flex-shrink-0 mr-auto">
           <Link href="/" className="text-xl font-bold flex items-center">
             BagenBae
           </Link>
         </div>
 
-        {/* Desktop Nav Links (tengah) */}
-        <div className="flex-1 hidden md:flex justify-center space-x-6">
+        {/* SECTION: TENGAH (Menu Navigasi) */}
+        <div className="hidden md:flex justify-center space-x-6 mx-auto">
           <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
             Dashboard
           </Link>
@@ -27,8 +27,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Right Icon (kanan) */}
-        <div className="flex-1 flex items-center justify-end space-x-4">
+        {/* SECTION: KANAN (Login & Icon) */}
+        <div className="flex items-center justify-end space-x-4 ml-auto">
           <Link href="/login" className="text-gray-600 hover:text-gray-900 transition-colors">
             Login
           </Link>

@@ -1,7 +1,34 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
-      <div className="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ipsum saepe assumenda consequatur ratione, fuga eum. Repellendus earum et placeat exercitationem quasi aliquam. Necessitatibus debitis reiciendis id ea nihil libero. Eius quod consectetur libero commodi quis et cum est, debitis pariatur totam non dicta vitae minus itaque, reiciendis eligendi eum adipisci quia. Expedita tempore at asperiores ea facere quas dolores repellendus iure, quisquam minima ipsam debitis minus earum accusamus, voluptatem, eius doloremque error nihil non cum laudantium neque suscipit aliquam. Quo officia, eius nostrum debitis repellat ut sit velit tempora unde necessitatibus, voluptatibus, iure ullam modi dolor? Consequuntur, aperiam qui.</p>
+    <div className="flex justify-between items-center p-4 bg-white shadow-md">
+      {/* Logo Section */}
+      <div className="flex items-center space-x-2">
+        <h1 className="text-xl font-bold flex items-center">
+          <img 
+            src="vercel.svg" 
+            alt="Vercel Logo" 
+            className="h-6 mr-2" 
+          />
+          BagenBae
+        </h1>
       </div>
+
+      {/* Navigation Links */}
+      <div className="flex items-center space-x-4">
+        <a 
+          href="#" 
+          className="text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          login
+        </a>
+        <img 
+          src="/window.svg" 
+          alt="Window Icon" 
+          className="h-5 w-5"
+        />
+      </div>
+    </div>
   );
 }

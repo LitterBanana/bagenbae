@@ -9,32 +9,32 @@ const heroSlides = [
   {
     id: 1,
     title: "Bestseller Collection",
-    description: "Temukan novel terbaik bulan ini",
-    image: "/hero-1.jpg"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-1.png"
   },
   {
     id: 2,
-    title: "New Releases",
-    description: "Karya terbaru dari penulis favorit Anda",
-    image: "/hero-2.jpg"
+    title: "New Releases New Releases New Releases New Releases",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-2.png"
   },
   {
     id: 3,
     title: "Classic Literature",
-    description: "Karya sastra abadi sepanjang masa",
-    image: "/hero-3.jpg"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-3.png"
   },
   {
     id: 4,
     title: "Award Winners",
-    description: "Novel pemenang penghargaan internasional",
-    image: "/hero-4.jpg"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-4.png"
   },
   {
     id: 5,
     title: "Local Authors",
-    description: "Dukung penulis dalam negeri",
-    image: "/hero-5.jpg"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-5.png"
   }
 ];
 
@@ -62,7 +62,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
     <Navbar />
-      <div className="w-full max-w-[1500px] mx-auto relative overflow-hidden">
+      <div className="w-full max-w-[1536px] max-h-[536px] mx-auto relative overflow-hidden rounded-3xl my-8">
         <div 
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -73,16 +73,23 @@ export default function Home() {
                 src={slide.image}
                 alt={slide.title}
                 fill
-                className="object-cover"
+                className="object-cover rounded-3xl"
                 priority
               />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center text-center">
-                <div className="text-white max-w-2xl px-4">
+              <div className="absolute inset-0 bg-black/30 flex items-center text-left rounded-3xl">
+                <div className="text-white max-w-2xl px-8">
                   <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
-                  <p className="text-xl mb-6">{slide.description}</p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">
-                    Lihat Koleksi
-                  </button>
+                  <p
+                    className="text-xl mb-6 line-clamp-3 text-justify"
+                    style={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {slide.description}
+                  </p>
                 </div>
               </div>
             </div>

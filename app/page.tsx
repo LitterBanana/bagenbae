@@ -1,50 +1,93 @@
-'use client'; // <-- Tambahkan ini di baris pertama
+"use client"; // <-- Tambahkan ini di baris pertama
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import Navbar from "./layouts/navbar";
+import Footer from "./layouts/footer";
+
 // Data dummy untuk hero section
 const heroSlides = [
   {
     id: 1,
     title: "Bestseller Collection",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "/hero-1.png"
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-1.png",
   },
   {
     id: 2,
     title: "New Releases New Releases New Releases New Releases",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "/hero-2.png"
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-2.png",
   },
   {
     id: 3,
     title: "Classic Literature",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "/hero-3.png"
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-3.png",
   },
   {
     id: 4,
     title: "Award Winners",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "/hero-4.png"
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-4.png",
   },
   {
     id: 5,
     title: "Local Authors",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "/hero-5.png"
-  }
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "/hero-5.png",
+  },
 ];
 
 // Data dummy novel
 const novels = [
-  { id: 1, title: "Laskar Pelangi", author: "Andrea Hirata", rating: 4.8, cover: "/novel-1.jpg" },
-  { id: 2, title: "Bumi Manusia", author: "Pramoedya Ananta Toer", rating: 4.9, cover: "/novel-2.jpg" },
-  { id: 3, title: "Perahu Kertas", author: "Dee Lestari", rating: 4.5, cover: "/novel-3.jpg" },
-  { id: 4, title: "Pulang", author: "Tere Liye", rating: 4.7, cover: "/novel-4.jpg" },
-  { id: 5, title: "Ronggeng Dukuh Paruk", author: "Ahmad Tohari", rating: 4.6, cover: "/novel-5.jpg" },
-  { id: 6, title: "Sang Pemimpi", author: "Andrea Hirata", rating: 4.4, cover: "/novel-6.jpg" }
+  {
+    id: 1,
+    title: "Laskar Pelangi",
+    author: "Andrea Hirata",
+    rating: 4.8,
+    cover: "/novel-1.jpg",
+  },
+  {
+    id: 2,
+    title: "Bumi Manusia",
+    author: "Pramoedya Ananta Toer",
+    rating: 4.9,
+    cover: "/novel-2.jpg",
+  },
+  {
+    id: 3,
+    title: "Perahu Kertas",
+    author: "Dee Lestari",
+    rating: 4.5,
+    cover: "/novel-3.jpg",
+  },
+  {
+    id: 4,
+    title: "Pulang",
+    author: "Tere Liye",
+    rating: 4.7,
+    cover: "/novel-4.jpg",
+  },
+  {
+    id: 5,
+    title: "Ronggeng Dukuh Paruk",
+    author: "Ahmad Tohari",
+    rating: 4.6,
+    cover: "/novel-5.jpg",
+  },
+  {
+    id: 6,
+    title: "Sang Pemimpi",
+    author: "Andrea Hirata",
+    rating: 4.4,
+    cover: "/novel-6.jpg",
+  },
 ];
 
 export default function Home() {
@@ -53,7 +96,9 @@ export default function Home() {
   // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
+      setCurrentSlide((prev) =>
+        prev === heroSlides.length - 1 ? 0 : prev + 1
+      );
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -72,7 +117,7 @@ export default function Home() {
       {/* Pindahkan padding ke luar container hero */}
       <div className="w-full px-2 sm:px-4 md:px-8">
         <div className="max-w-[1536px] max-h-[536px] mx-auto relative overflow-hidden rounded-3xl my-8">
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-in-out w-full"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
@@ -80,7 +125,7 @@ export default function Home() {
               <div
                 key={slide.id}
                 className="w-full flex-shrink-0 relative pb-[56.25%]"
-                style={{ minWidth: '100%' }}
+                style={{ minWidth: "100%" }}
               >
                 <Image
                   src={slide.image}
@@ -96,10 +141,10 @@ export default function Home() {
                     <p
                       className="text-xl mb-6 line-clamp-3 text-justify"
                       style={{
-                        display: '-webkit-box',
+                        display: "-webkit-box",
                         WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
                       }}
                     >
                       {slide.description}
@@ -109,16 +154,26 @@ export default function Home() {
               </div>
             ))}
           </div>
-          
+
           {/* Slide Indicators & Navigation Arrows */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-4 z-10">
-            <button 
+            <button
               onClick={prevSlide}
               className="bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition-colors"
               aria-label="Previous slide"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
             <div className="flex space-x-2">
@@ -126,18 +181,30 @@ export default function Home() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-white w-6' : 'bg-white/50'}`}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    currentSlide === index ? "bg-white w-6" : "bg-white/50"
+                  }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
-            <button 
+            <button
               onClick={nextSlide}
               className="bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition-colors"
               aria-label="Next slide"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -148,10 +215,13 @@ export default function Home() {
       {/* Novel Section */}
       <div className="container mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold mb-8 text-center">Koleksi Novel</h2>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {novels.map((novel) => (
-            <div key={novel.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+            <div
+              key={novel.id}
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+            >
               <div className="relative h-64">
                 <Image
                   src={novel.cover}
@@ -169,7 +239,11 @@ export default function Home() {
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        className={`w-5 h-5 ${i < Math.floor(novel.rating) ? 'fill-current' : 'fill-none stroke-current'}`}
+                        className={`w-5 h-5 ${
+                          i < Math.floor(novel.rating)
+                            ? "fill-current"
+                            : "fill-none stroke-current"
+                        }`}
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -181,7 +255,9 @@ export default function Home() {
                       </svg>
                     ))}
                   </div>
-                  <span className="ml-2 text-gray-600">{novel.rating.toFixed(1)}</span>
+                  <span className="ml-2 text-gray-600">
+                    {novel.rating.toFixed(1)}
+                  </span>
                 </div>
                 <button className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition-colors">
                   Lihat Detail
@@ -191,6 +267,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

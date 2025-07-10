@@ -12,7 +12,7 @@ export async function POST(request: Request) {
         id: 1,
         name: 'John Doe',
         email: 'user@example.com'
-      }
+      }      
     });
   }
 

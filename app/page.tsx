@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from "./layouts/navbar";
-
 // Data dummy untuk hero section
 const heroSlides = [
   {
